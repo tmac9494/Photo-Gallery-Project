@@ -24,7 +24,7 @@ function findArrowShift() {
 		$rightDescription =  $toChildR.attr('alt');
 		//get left arrow description
 		$leftDescription = $toChildL.attr('alt');
-};
+}
 
 function setLeft() {
 	//set left arrow img src
@@ -32,21 +32,21 @@ function setLeft() {
 	//set left arrow description
 	$description = $leftDescription;
 	//make change and get new values
-};
+}
 function setRight() {
 	//set right arrow img src
 	$NewLink = $rightLink;
 	//set right arrow description
 	$description = $rightDescription;
 	//make change and get new value	
-};
+}
 
 function close() {
 	$('.big-pic-wrap').fadeOut(200, function() {
 			$(this).remove();
 		});
 	$shadow.fadeOut(200);
-};
+}
 
 function picVidCheck() {
 //if video show or hide elements
@@ -57,9 +57,9 @@ function picVidCheck() {
 	} else if(!$bigPicSelect.hasClass('gallery-video')) {
 		$('.big-pic-wrap img').show();
 		$('.big-pic-wrap iframe').hide();
-	};
+	}
 
-};
+}
 
 function getPosition() {
 	//reset arrow values after clicking an arrow
@@ -69,7 +69,7 @@ function getPosition() {
 		$picPositionAfterLink = $('.big-pic-wrap iframe').attr('src');
 		} else {
 		$picPositionAfterLink = $('.big-pic-wrap img').attr('src');
-		};
+		}
 
 		//find image link location after slide change using src from^^^
 		$picPositionAfter = $gallery.find('a[href="' + $picPositionAfterLink +'"]');
@@ -79,7 +79,7 @@ function getPosition() {
 
 		picVidCheck();
 		findArrowShift();
-};
+}
 
 //function to call the change to the lightbox
 function changeBigPic() {
@@ -94,7 +94,7 @@ function changeBigPic() {
 		$('.big-pic-wrap iframe').attr('src', $NewLink);
 
 	//fade in lightbox image and text after src and description change
-		$('.iframe, .pic-description').fadeIn(200, function() {
+		$('iframe, .pic-description').fadeIn(200, function() {
 
 			getPosition();
 
@@ -120,8 +120,8 @@ function changeBigPic() {
 		});
 
 	});
-};
-};
+}
+}
 
 function checkForEnd() {
 		//dont show description if at beginning or end of img list
@@ -129,8 +129,8 @@ function checkForEnd() {
 			$rightDescription = $('.big-pic-wrap .pic-description').text();
 		} else if (! $leftDescription) {
 			$leftDescription = $('.big-pic-wrap .pic-description').text();
-		};
-};
+		}
+}
 
 //gallery light box
 
@@ -151,24 +151,24 @@ $('.gallery-img a').click(function(e) {
 		$shadow.fadeIn(200);
 
 		//dont-show description if at beggining or end of img list
-		checkForEnd()
+		checkForEnd();
 
 });
 
 // arrow key navigation for light-box
 
-$(document).keyup(function(e){
+$(document).keydown(function(e){
     if (e.keyCode === 37) {
     	setLeft();
-    } else if (e.keyCode === 39) {
-		setRight();
-    };
     checkForEnd();
     changeBigPic();
-
-     if (e.keyCode === 27) {
+    } else if (e.keyCode === 39) {
+		setRight();
+    checkForEnd();
+    changeBigPic();
+    } else if (e.keyCode === 27) {
    		close();
-    };
+    }
 });
 
 //arrow click navigation for lightbox
@@ -181,7 +181,7 @@ $('.arrows').click(function(e) {
 		// arrow left effect
 		} else if($(this).hasClass('shift-left')) {
 			setLeft();
-		};
+		}
 
 		checkForEnd();
 		//make change and get new values	
@@ -216,7 +216,7 @@ $('.arrows').click(function(e) {
 				$(this).fadeOut(function() {
 					$(this).addClass('hidden');
 				});
-			};
+			}
 		});
 		
 		//remove .hidden for keep elements
@@ -226,7 +226,7 @@ $('.arrows').click(function(e) {
 				$(this).fadeIn(function() {
 					$(this).removeClass('hidden');
 				});
-			};
+			}
 		});
 
 		//if field is empty show all(remove all .hidden classes)
@@ -236,13 +236,10 @@ $('.arrows').click(function(e) {
 				$(this).removeClass('hidden');
 				});
 			});
-		};
+		}
 	});
 
 // add play icons to videos
  $('.gallery-video').append('<div class="play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></div>');
 
 });
-
-
-
