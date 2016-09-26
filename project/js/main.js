@@ -4,8 +4,6 @@ var $shadow = $('.light-box');
 var $picLink;
 var $picDescription;
 var $gallery = $('.gallery');
-var $newVideoLink;
-var $newVideoType;
 
 function findArrowShift() {
 	//get right arrow next pic
@@ -98,12 +96,7 @@ $('.gallery-img a').click(function(e) {
 		//find the next image containers for arrows
 		$bigPicSelect = $(this).parent();
 
-		// if ($bigPicSelect.hasClass('gallery-video')) {
-
-		// };
-
 		findArrowShift();
-
 
 		$shadow.append('<div class="big-pic-wrap"><img src="'+ $picLink +'" class="big-pic"> <iframe width="560" height="315" src="'+ $picLink +'" frameborder="0" allowfullscreen></iframe> <p class="pic-description">'+ $picDescription +'</p></div>');
 		
@@ -117,8 +110,6 @@ $('.gallery-img a').click(function(e) {
 			$('.big-pic-wrap img').show();
 			$('.big-pic-wrap iframe').hide();
 		}
-
-		// $shadow.append('<div class="big-pic-wrap"><img src="'+ $picLink +'" class="big-pic"> <p class="pic-description">'+ $picDescription +'</p></div>');
 		//show background
 		$shadow.fadeIn(200);
 
