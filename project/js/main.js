@@ -214,7 +214,9 @@ $('.arrows').click(function(e) {
 				//do nothing
 			} else {
 				//add class to trash divs
-				$(this).addClass('hidden');
+				$(this).fadeOut(function() {
+					$(this).addClass('hidden');
+				});
 			}
 		});
 		
@@ -222,14 +224,18 @@ $('.arrows').click(function(e) {
 		$keep.each(function() {
 			if ($(this).hasClass('hidden')) {
 				//remove .hiddden from good divs
-				$(this).removeClass('hidden');
+				$(this).fadeIn(function() {
+					$(this).removeClass('hidden');
+				});
 			}
 		});
 
 		//if field is empty show all(remove all .hidden classes)
 		if (! $searchString) {
 			$trash.each(function() {
+				$(this).fadeIn(function() {
 				$(this).removeClass('hidden');
+				});
 			});
 		}
 	});
