@@ -10,20 +10,14 @@ function findArrowShift() {
 	$shiftRight = $bigPicSelect.nextAll('.gallery-img').not('.hidden').first();
 	//get left arrow next pic
 	$shiftLeft = $bigPicSelect.prevAll('.gallery-img').not('.hidden').first();
-		//get to children (a)
-		$rightL = $shiftRight.children();
-		$leftL = $shiftLeft.children();
-		//get left picture from a href value
-		$leftLink = $leftL.attr('href');
-		//get right picture from a href value
-		$rightLink = $rightL.attr('href');
-		//get to child of a (img)
-		$toChildR = $rightL.children(); 
-		$toChildL = $leftL.children();
-		//get right arrow description
-		$rightDescription =  $toChildR.attr('alt');
-		//get left arrow description
-		$leftDescription = $toChildL.attr('alt');
+	//get left picture from a href value
+	$leftLink = $shiftLeft.children('a').attr('href');
+	//get right picture from a href value
+	$rightLink = $shiftRight.children('a').attr('href');
+	//get right arrow description
+	$rightDescription =  $shiftRight.children('a').children('img').attr('alt');
+	//get left arrow description
+	$leftDescription = $shiftLeft.children('a').children('img').attr('alt');
 }
 
 function setLeft() {
@@ -233,7 +227,7 @@ $('.arrows').click(function(e) {
 		if (! $searchString) {
 			$trash.each(function() {
 				$(this).fadeIn(function() {
-				$(this).removeClass('hidden');
+					$(this).removeClass('hidden');
 				});
 			});
 		}

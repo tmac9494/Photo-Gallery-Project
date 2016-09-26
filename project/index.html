@@ -3,6 +3,7 @@
 <head>
 <title>Photo Gallery</title>
 <link rel="stylesheet" href="css/normalize.css">
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/styles.css">
 <script src="js/jquery-3.1.1.min.js"></script>
@@ -10,10 +11,12 @@
 </head>
 <body>
 	<header class="clearfix">
-	<h1 class="title">Gallery Title</h1>
-		<form action="" id="search-form">
+	<div class="head-wrap">
+	<h1 class="title">SimpL Gallery</h1>
+		<form id="search-form">
 		        <input type="text" id="search" name="search" />
 		</form>
+	</div>
 	</header>
 	<div class="container">
 		<div class="gallery">
@@ -94,7 +97,6 @@
 				</div>
 				<div class="left-arrow arrow-container">
 				<a href="#" class="shift-left arrows"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
-				</div>
 				</div>
 			</div>
 		</div>

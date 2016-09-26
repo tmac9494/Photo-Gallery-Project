@@ -5,9 +5,6 @@
 	box-sizing: border-box;
 }
 
-:root {
-	margin-top: 69px;
-}
 
 .clearfix {
 	display: table;
@@ -26,24 +23,25 @@
 
 header {
 	width: 100%;
-	position: fixed;
-	top: 0; right: 0; left: 0;
 	background: linear-gradient(#fff,#fafafa,#f5f5f5);
 	box-shadow: 0px 1px 3px rgba(0,0,0,0.32);
 	z-index: 2000;
+	margin: 0;
+	font-family: 'Lobster';
 }
 
 .title {
-	padding: 16px;
-	float: left;
-	margin-left: 10px;
-	margin: 0;
+	display: block;
+	margin: 0 auto;
+	padding: 10px;
+	text-align: center;
 }
 
 form {
-	float: right;
-	padding: 16px;
-	margin-right: 10px;
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+	padding: 15px;
 }
 
 
@@ -74,6 +72,7 @@ form {
 	position: relative;
 }
 
+
 .light-box {
 	background: rgba(75,75,75,0.8);
 	position: fixed;
@@ -85,7 +84,7 @@ form {
 
 .close a {
 	position: fixed;
-	top: 10%;
+	top: 5%;
 	right: 10%;
 	color: #fff;
 	z-index: 1000;
@@ -96,7 +95,7 @@ form {
 	top: 50%; left: 50%;
 	transform: translate(-50%, -50%);
 	width: 90%;
-	max-width: 550px;
+	max-width: 600px;
 }
 
 .big-pic,
@@ -133,6 +132,16 @@ iframe {
 	font-size: 25px;
 }
 
+.arrows,
+.close a { padding: .5em; background: rgba(0,0,0,0.75); display: block;}
+
+.arrows:active,
+.close a:active {
+	background: rgba(255,255,255,0.75);
+	color: #212121;
+}
+
+
 .right-arrow {
 	position: fixed;
 	top: 50%; right: 12px;
@@ -147,12 +156,6 @@ iframe {
 	z-index: 1000;
 }
 
-/*.big-pic {
-	transition: all 1s;
-}*/
-
-.arrows i,
-.close a { padding: .5em; background: rgba(0,0,0,0.75); display: block;}
 
 .play-icon {
 	font-size: 6.5rem;
@@ -162,6 +165,8 @@ iframe {
 	color: #f5f5f5;
 	text-shadow: 5px 5px 12px rgba(0,0,0,0.42);
 	cursor: pointer;
+
+	/*this throws an error in the validator but it works on my project to keep the video images in the gallery clickable*/
 	pointer-events: none;
 }
 
@@ -182,6 +187,32 @@ iframe {
 
 @media screen and (min-width: 550px) {  /*---PHABLET---*/
 
+/*****---general---*****/
+
+:root {
+	margin-top: 69px;
+}
+
+/*****---header---*****/
+
+header {
+	position: fixed;
+	top: 0; right: 0; left: 0;
+}
+
+.title {
+	padding: 16px;
+	float: left;
+	margin-left: 10px;
+	margin: 0;
+}
+
+form {
+	float: right;
+	padding: 16px;
+	padding-top: 21px;
+	margin-right: 10px;
+}
 
 
 
@@ -206,6 +237,12 @@ iframe {
 @media screen and (min-width: 768px) {  /*---TABLET---*/
 
 
+/*****---GALLERY---*****/
+.head-wrap {
+	max-width: 768px;
+	display: block;
+	margin: 0 auto;
+}
 
 /*****---GALLERY---*****/
 
@@ -213,7 +250,8 @@ iframe {
 	width: 33.333%;
 }
 
-.big-pic {
+.arrows {
+	padding: 100px 10px;
 }
 
 
