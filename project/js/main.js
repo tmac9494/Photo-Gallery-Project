@@ -240,4 +240,10 @@ $('.arrows').click(function(e) {
 		}
 	});
 
+// add play icons to videos
+ $('.gallery-video').append('<div class="play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></div>');
+
 });
+
+
+

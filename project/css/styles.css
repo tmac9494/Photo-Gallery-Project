@@ -30,6 +30,7 @@ header {
 	top: 0; right: 0; left: 0;
 	background: linear-gradient(#fff,#fafafa,#f5f5f5);
 	box-shadow: 0px 1px 3px rgba(0,0,0,0.32);
+	z-index: 2000;
 }
 
 .title {
@@ -70,6 +71,7 @@ form {
 	margin: 0;
 	margin: 30px 0;
 	display: block;
+	position: relative;
 }
 
 .light-box {
@@ -78,6 +80,7 @@ form {
 	top: 0; right: 0; left: 0; bottom: 0;
 	display: none;
 	padding: 1em;
+	z-index: 2001;
 }
 
 .close a {
@@ -150,6 +153,17 @@ iframe {
 
 .arrows i,
 .close a { padding: .5em; background: rgba(0,0,0,0.75); display: block;}
+
+.play-icon {
+	font-size: 6.5rem;
+	position: absolute;
+	top: 50%;left: 50%;
+	transform: translate(-50%, -50%);
+	color: #f5f5f5;
+	text-shadow: 5px 5px 12px rgba(0,0,0,0.42);
+	cursor: pointer;
+	pointer-events: none;
+}
 
 .hidden {
 	display: none;
