@@ -33,18 +33,20 @@ function close() {
 	$shadow.fadeOut(200);
 };
 
-//function to call the change to the lightbox
-function changeBigPic() {
-//fade lightbox image and text out before src and description change
-	$('.big-pic, .pic-description').fadeOut(200, function() {
-		//make changes after choosing direction
-		$('.big-pic-wrap .pic-description').html($description);
-		$('.big-pic-wrap img').attr('src', $NewLink);
-		$('.big-pic-wrap iframe').attr('src', $NewLink);
+function picVidCheck() {
+//if video show or hide elements
+	if ($bigPicSelect.hasClass('gallery-video')) {
+		$('.big-pic-wrap .big-pic').hide();
+		$('.big-pic-wrap iframe').show();
 
-	//fade in lightbox image and text after src and description change
-		$('.big-pic, .pic-description').fadeIn(200, function() {
+	} else if(!$bigPicSelect.hasClass('gallery-video')) {
+		$('.big-pic-wrap img').show();
+		$('.big-pic-wrap iframe').hide();
+	}
 
+};
+
+function getPosition() {
 	//reset arrow values after clicking an arrow
 		//get current light-box img src
 		//if video, get values
@@ -60,21 +62,50 @@ function changeBigPic() {
 		//get to parent to traverse
 		$bigPicSelect = $picPositionAfter.parent();
 
-		//if video, get values
-		if ($bigPicSelect.hasClass('gallery-video')) {
-			$('.big-pic-wrap .big-pic').hide();
-			$('.big-pic-wrap iframe').show();
-
-		} else if(!$bigPicSelect.hasClass('gallery-video')) {
-			$('.big-pic-wrap img').show();
-			$('.big-pic-wrap iframe').hide();
-		}
-
+		picVidCheck();
 		findArrowShift();
+};
+
+//function to call the change to the lightbox
+function changeBigPic() {
+//fade lightbox image and text out before src and description change
+	
+	if ($bigPicSelect.hasClass('gallery-video')) {
+
+	$('iframe, .pic-description').fadeOut(200, function() {
+		//make changes after choosing direction
+		$('.big-pic-wrap .pic-description').html($description);
+		$('.big-pic-wrap img').attr('src', $NewLink);
+		$('.big-pic-wrap iframe').attr('src', $NewLink);
+
+	//fade in lightbox image and text after src and description change
+		$('.iframe, .pic-description').fadeIn(200, function() {
+
+			getPosition();
 
 		});
 
 	});
+	} else {
+
+	$('.big-pic, .pic-description').fadeOut(200, function() {
+		//make changes after choosing direction
+		$('.big-pic-wrap .pic-description').html($description);
+		$('.big-pic-wrap img').attr('src', $NewLink);
+		$('.big-pic-wrap iframe').attr('src', $NewLink);
+
+	//fade in lightbox image and text after src and description change
+		$('.big-pic, .pic-description').fadeIn(200, function() {
+
+	//reset arrow values after clicking an arrow
+		//get current light-box img src
+		//if video, get values
+			getPosition();
+
+		});
+
+	});
+};
 };
 
 function checkForEnd() {
@@ -101,15 +132,7 @@ $('.gallery-img a').click(function(e) {
 		$shadow.append('<div class="big-pic-wrap"><img src="'+ $picLink +'" class="big-pic"> <iframe width="560" height="315" src="'+ $picLink +'" frameborder="0" allowfullscreen></iframe> <p class="pic-description">'+ $picDescription +'</p></div>');
 		
 
-		//if video, get values
-		if ($bigPicSelect.hasClass('gallery-video')) {
-			$('.big-pic-wrap .big-pic').hide();
-			$('.big-pic-wrap iframe').show();
-
-		} else if(!$bigPicSelect.hasClass('gallery-video')) {
-			$('.big-pic-wrap img').show();
-			$('.big-pic-wrap iframe').hide();
-		}
+		picVidCheck();
 		//show background
 		$shadow.fadeIn(200);
 
@@ -117,7 +140,6 @@ $('.gallery-img a').click(function(e) {
 		checkForEnd()
 
 });
-
 
 // arrow key navigation for light-box
 
@@ -143,11 +165,6 @@ $(document).keydown(function(e){
     }
 });
 
-
-
-
-
-
 //arrow click navigation for lightbox
 
 $('.arrows').click(function(e) {
@@ -172,26 +189,11 @@ $('.arrows').click(function(e) {
 		changeBigPic();
 });
 
-
-
-
-
 //exit button
 	$('.close').click(function(e) {
 		e.preventDefault();
 		close();
 	});		
-
-
-
-
-
-
-
-
-
-
-
 
 //Search Box
 	//remove images that do not contain text inside the searchbox in their alt tags
