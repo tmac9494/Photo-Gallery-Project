@@ -72,44 +72,32 @@ function getPosition() {
 	findArrowShift();
 }
 
-//function to call the change to the lightbox
-function changeBigPic() {
-//fade lightbox image and text out before src and description change
-	
-	if ($bigPicSelect.hasClass('gallery-video')) {
-
-		$('iframe, .pic-description').fadeOut(200, function() {
+function newInfo(type) {
+	$('' + type +', .pic-description').fadeOut(200, function() {
 			//make changes after choosing direction
 			$('.big-pic-wrap .pic-description').html($description);
 			$('.big-pic-wrap img').attr('src', $NewLink);
 			$('.big-pic-wrap iframe').attr('src', $NewLink);
 
 		//fade in lightbox image and text after src and description change
-			$('iframe, .pic-description').fadeIn(200, function() {
+			$('' + type + ', .pic-description').fadeIn(200, function() {
 
-				getPosition();
-
-			});
-
-		});
-	} else {
-
-		$('.big-pic, .pic-description').fadeOut(200, function() {
-			//make changes after choosing direction
-			$('.big-pic-wrap .pic-description').html($description);
-			$('.big-pic-wrap img').attr('src', $NewLink);
-			$('.big-pic-wrap iframe').attr('src', $NewLink);
-
-		//fade in lightbox image and text after src and description change
-			$('.big-pic, .pic-description').fadeIn(200, function() {
-
-		//reset arrow values after clicking an arrow
 				getPosition();
 
 			});
 
 		});
 }
+
+//function to call the change to the lightbox
+function changeBigPic() {
+//fade lightbox image and text out before src and description change
+	
+	if ($bigPicSelect.hasClass('gallery-video')) {
+		newInfo('iframe');
+	} else {
+		newInfo('.big-pic');
+	}
 }
 
 function checkForEnd() {
