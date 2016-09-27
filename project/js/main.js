@@ -67,7 +67,6 @@ function getPosition() {
 
 	//find image location after slide change using src from^^^
 	$bigPicSelect = $gallery.find('a[href="' + $picPositionAfterLink +'"]').parent();
-
 	picVidCheck();
 	findArrowShift();
 }
@@ -92,7 +91,6 @@ function newInfo(type) {
 //function to call the change to the lightbox
 function changeBigPic() {
 //fade lightbox image and text out before src and description change
-	
 	if ($bigPicSelect.hasClass('gallery-video')) {
 		newInfo('iframe');
 	} else {
@@ -114,7 +112,7 @@ function checkForEnd() {
 $('.gallery-img a').click(function(e) {
 	e.preventDefault();
 	//get pic and description
-	$picDescription = $(this).children(['img']).attr('alt');
+	$picDescription = $(this).children('img').attr('alt');
 	$picLink = $(this).attr('href');
 	//find the next image containers for arrows
 	$bigPicSelect = $(this).parent();
